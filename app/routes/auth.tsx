@@ -27,8 +27,11 @@ function IsAuth({
 }
 
 export const meta = () => [
-  { title: "Resumeind | Auth" },
-  { name: "description", content: "Log into your account" },
+  { title: "ResAnalyze | Login Page" },
+  {
+    name: "description",
+    content: "Authentication Page- Login/SignUp into your account ",
+  },
 ]; // REMIX alternative of useState
 const Auth = () => {
   const { isLoading, auth } = usePuterStore();

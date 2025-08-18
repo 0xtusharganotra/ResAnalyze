@@ -7,13 +7,39 @@ import { useLocation, useNavigate } from "react-router";
 import { usePuterStore } from "~/lib/puter";
 
 export function meta({}: Route.MetaArgs) {
+  // for SE0 - meta title , meta description
   return [
-    { title: "ResAnalyze" },
+    { title: "ResAnalyze | AI Resume Analyzer & Job Matching Tool" },
     {
       name: "description",
       content:
-        "AI-powered resume analyzer that scores your Resume and gives tailored recommendations based on the job description you provide.",
+        "ResAnalyze is an AI-powered resume analyzer that scores your resume, provides ATS insights, and gives tailored recommendations based on the job description you provide.",
     },
+    {
+      name: "keywords",
+      content:
+        "resume analyzer, AI resume analysis, job matching tool, resume scoring, ATS resume checker, career tool, job description matching, ResAnalyze",
+    },
+    // Open Graph (for Facebook, LinkedIn, etc.)
+    { property: "og:title", content: "ResAnalyze | AI Resume Analyzer" },
+    {
+      property: "og:description",
+      content:
+        "Boost your job applications with AI. Analyze your resume, check ATS compatibility, and optimize it for your target job using ResAnalyze.",
+    },
+    { property: "og:type", content: "website" },
+    { property: "og:url", content: "https://yourdomain.com" }, // Replace with your domain
+    { property: "og:image", content: "https://yourdomain.com/preview.png" }, // Replace with a preview image
+
+    // Twitter Cards
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: "ResAnalyze | AI Resume Analyzer" },
+    {
+      name: "twitter:description",
+      content:
+        "AI-powered resume analyzer that scores your resume and optimizes it for ATS & job descriptions.",
+    },
+    { name: "twitter:image", content: "https://yourdomain.com/preview.png" },
   ];
 }
 
