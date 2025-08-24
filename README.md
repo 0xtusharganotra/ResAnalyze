@@ -1,87 +1,62 @@
-# Welcome to React Router!
+RezAnalyze System Documentation
 
-A modern, production-ready template for building full-stack React applications using React Router.
+Project Overview
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+RezAnalyze is an AI-powered resume analyzer designed to help users improve their resumes and increase their chances of getting hired. The
+application allows users to upload their resumes in PDF format, and then it provides a comprehensive analysis, including an overall score,
+feedback on ATS (Applicant Tracking System) compatibility, and tailored recommendations for improvement based on a provided job description.
+The system uses Puter for user authentication and to store the analysis results.
 
-## Features
+Key Technologies
 
-- 🚀 Server-side rendering
-- ⚡️ Hot Module Replacement (HMR)
-- 📦 Asset bundling and optimization
-- 🔄 Data loading and mutations
-- 🔒 TypeScript by default
-- 🎉 TailwindCSS for styling
-- 📖 [React Router docs](https://reactrouter.com/)
+- Frontend: React, TypeScript, Vite, Tailwind CSS
+- Routing: react-router
+- State Management: zustand
+- File Handling: react-dropzone for file uploads, pdfjs-dist for rendering PDF previews.
+- Backend & Authentication: Puter.io for user authentication and key-value data storage.
 
-## Getting Started
+Code Structure and Functionality
 
-### Installation
+app/root.tsx
+This is the main entry point for the React application. It sets up the basic layout, including the navigation bar, and renders the different
+routes of the application.
 
-Install the dependencies:
+app/routes.ts
+This file defines the URL routes for the application, mapping paths like /, /upload, and /auth to their corresponding components.
 
-```bash
-npm install
-```
+app/routes/home.tsx
+The landing page of the application. It displays a list of previously analyzed resumes and provides a starting point for users.
 
-### Development
+app/routes/upload.tsx
+This is where users can upload their resumes for analysis. It features a file upload component and is the starting point for the resume
+analysis workflow.
 
-Start the development server with HMR:
+app/routes/auth.tsx
+Handles user authentication using the Puter SDK. It provides a simple interface for users to log in with their Puter account.
 
-```bash
-npm run dev
-```
+app/componenets/fileuploader.tsx
+A reusable React component that provides a drag-and-drop interface for file uploads, built using the react-dropzone library.
 
-Your application will be available at `http://localhost:5173`.
+app/componenets/resumecard.tsx
+A component used on the home page to display a summary of each analyzed resume, including a preview image and the analysis score.
 
-## Building for Production
+app/lib/pdftoimage.ts
+A utility that converts the first page of an uploaded PDF into a PNG image. This is used to display a visual preview of the resume in the UI.
+It uses the pdfjs-dist library to render the PDF.
 
-Create a production build:
+app/lib/puter.ts
+This file encapsulates all interactions with the Puter SDK. It includes functions for user authentication (login, getUser) and for storing and
+retrieving data from Puter's key-value store (kv.get, kv.set).
 
-```bash
-npm run build
-```
+constants/index.ts
+This file centralizes constant values used throughout the application, such as navigation links.
 
-## Deployment
+Puter Integration
 
-### Docker Deployment
+The application is built on the Puter platform, leveraging its backend services for key functionalities:
 
-To build and run using Docker:
-
-```bash
-docker build -t my-app .
-
-# Run the container
-docker run -p 3000:3000 my-app
-```
-
-The containerized application can be deployed to any platform that supports Docker, including:
-
-- AWS ECS
-- Google Cloud Run
-- Azure Container Apps
-- Digital Ocean App Platform
-- Fly.io
-- Railway
-
-### DIY Deployment
-
-If you're familiar with deploying Node applications, the built-in app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-```
-├── package.json
-├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
-├── build/
-│   ├── client/    # Static assets
-│   └── server/    # Server-side code
-```
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
-
----
-
-Built with ❤️ using React Router.
+- Authentication: User authentication is handled entirely by Puter. The puter.auth.login() function is used to initiate the login flow, and
+  puter.auth.getUser() retrieves the current user's information. This simplifies the development process by removing the need for a custom
+  authentication system.
+- Data Storage: The application uses Puter's key-value store (puter.kv) to persist data, such as the results of resume analyses. This allows
+  users to view their past results without needing a traditional database setup.
