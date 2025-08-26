@@ -73,6 +73,17 @@ export default function Home() {
             </i>
           </p>
         </div>
+        <div className=" p-5 mx-5 md:flex justify-center hidden backdrop: ">
+          <img
+            src="/images/resume-analyze-preview.png"
+            className="rounded-2xl shadow-xl"
+            alt=""
+          />
+        </div>
+
+        <div className="sm:flex hidden mt-8 mb-7 ">
+          <h1 className="!text-4xl">Recently Scanned Resume</h1>
+        </div>
 
         {resumes.length > 0 && (
           <div className="resumes-section">
