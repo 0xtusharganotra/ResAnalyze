@@ -3,10 +3,7 @@ import { Link } from "react-router";
 import ScoreCircle from "./scorecircle";
 const ResumeCard = ({ id, resume }) => {
   return (
-    <Link
-      to={`/resume/${id}`}
-      className="resume-card animate-in fade-in duration-1000 "
-    >
+    <Link to={`/`} className="resume-card animate-in fade-in duration-1000 ">
       <div className="resume-card-header flex flex-row">
         <div className="flex flex-col gap-2">
           <h2 className="!text-black font-bold break-words">
