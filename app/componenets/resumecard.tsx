@@ -25,7 +25,7 @@ const ResumeCard = ({ id, resume }) => {
           <img
             src={resume.imagePath}
             alt="resume"
-            className="w-full h-[350px] object-cover object-top "
+            className=" h-[350px] w-[350px] object-cover object-top "
           />
         </div>
       </div>

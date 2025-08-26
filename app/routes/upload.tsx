@@ -2,6 +2,7 @@ import { prepareInstructions } from "constants";
 import React, { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router";
 import FileUploader from "~/componenets/fileuploader";
+import FooterSign from "~/componenets/FooterSign";
 import Navbar from "~/componenets/navbar";
 import { convertPdfToImage } from "~/lib/pdftoimage";
 import { usePuterStore } from "~/lib/puter";
@@ -50,7 +51,8 @@ const Upload = () => {
 
     const data = {
       id: uuid,
-      resumePath: uploadedImage.path,
+      resumePath: uploadedFile.path,
+      imagePath: uploadedImage.path,
       CompanyName,
       jobTitle,
       jobDescription,
@@ -75,7 +77,7 @@ const Upload = () => {
 
     data.feedback = JSON.parse(feedbackText);
 
-    await kv.set(`resum${uuid}`, JSON.stringify(data));
+    await kv.set(`resume:${uuid}`, JSON.stringify(data));
 
     setstatusText("Analysis complete , redirecting...");
     console.log(data);
@@ -117,7 +119,7 @@ const Upload = () => {
           {isProcessing ? (
             <>
               <h2>{statusText}</h2>{" "}
-              <img src="\images\resume-scan.gif" className="w-full" alt="" />
+              <img src="\images\resume-scan.gif" className="w-[400px]" alt="" />
             </>
           ) : (
             <h2>Drop your resume for an ATS score and improvement tips</h2>
@@ -170,6 +172,7 @@ const Upload = () => {
           )}
         </div>
       </section>
+      <FooterSign />
     </main>
   );
 };

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router";
 import { Link } from "react-router";
 import Ats from "~/componenets/Ats";
 import Details from "~/componenets/details";
+import FooterSign from "~/componenets/FooterSign";
 import Summary from "~/componenets/summary";
 import { usePuterStore } from "~/lib/puter";
 
@@ -26,7 +27,7 @@ const Resume = () => {
     if (!isLoading && !auth.isAuthenticated) {
       navigate(`/auth?next=/resume/${id}`);
     }
-  }, [auth.isAuthenticated]);
+  }, [isLoading]);
 
   useEffect(() => {
     async function LoadResume() {
@@ -52,6 +53,7 @@ const Resume = () => {
       setImageUrl(imageUrl);
 
       setfeedback(data.feedback);
+      console.log(imageUrl);
     }
 
     LoadResume();
@@ -68,7 +70,7 @@ const Resume = () => {
         </Link>
       </nav>
       <div className="flex flex-row w-full max-lg:flex-col-reverse">
-        <section className="feedback-section bg-[url('/images/bg-small.svg') bg-cover top-0 h-[100vh] sticky items-center justify-center">
+        <section className="feedback-section bg-[url('/images/bg-small.svg') bg-cover top-0  sticky items-center justify-center">
           {imageUrl && resumeUrl && (
             <div className="feedback-section animate-in fade-in duration-100 gradient-border max-sm:m-0 h-[90%] max-wxl:h-fit w-fit">
               <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
@@ -76,7 +78,7 @@ const Resume = () => {
                   src={imageUrl}
                   alt="resume"
                   title="resume"
-                  className="w-full h-full object-contain rounded-2xl"
+                  className="w-full h-[100%] overflow-hidden object-contain rounded-2xl"
                 />
               </a>
             </div>

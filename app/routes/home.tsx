@@ -5,6 +5,7 @@ import ResumeCard from "~/componenets/resumecard";
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router";
 import { usePuterStore } from "~/lib/puter";
+import FooterSign from "~/componenets/FooterSign";
 
 export function meta({}: Route.MetaArgs) {
   // for SE0 - meta title , meta description
@@ -61,8 +62,16 @@ export default function Home() {
 
       <section className="main-section">
         <div className="page-heading py-16">
-          <h1>Track Your applications and resume ratintgs</h1>
-          <h2>Review Your subscription and check AI powered feedback</h2>
+          <h1 className="pb-2">
+            AI-Powered Resume Analyzer to Land Your <i>Dream Job</i>
+          </h1>
+          <p className="text-lg">
+            <i>
+              {" "}
+              Get ATS-friendly insights, resume scores, and personalized
+              recommendations tailored to your job description.
+            </i>
+          </p>
         </div>
 
         {resumes.length > 0 && (
@@ -73,6 +82,7 @@ export default function Home() {
           </div>
         )}
       </section>
+      <FooterSign />
     </main>
   );
 }
