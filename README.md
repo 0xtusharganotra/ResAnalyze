@@ -1,62 +1,68 @@
-RezAnalyze System Documentation
+# ResAnalyze: AI-Powered Resume Analyzer
 
-Project Overview
+ResAnalyze is an AI-powered resume analyzer that helps you optimize your resume for Applicant Tracking Systems (ATS) and land your dream job. It scores your resume, provides insights, and gives you tailored recommendations based on the job description you provide.
 
-RezAnalyze is an AI-powered resume analyzer designed to help users improve their resumes and increase their chances of getting hired. The
-application allows users to upload their resumes in PDF format, and then it provides a comprehensive analysis, including an overall score,
-feedback on ATS (Applicant Tracking System) compatibility, and tailored recommendations for improvement based on a provided job description.
-The system uses Puter for user authentication and to store the analysis results.
+![RezAnalyze-Preview](/public/images/image.png)
 
-Key Technologies
+## Features
 
-- Frontend: React, TypeScript, Vite, Tailwind CSS
-- Routing: react-router
-- State Management: zustand
-- File Handling: react-dropzone for file uploads, pdfjs-dist for rendering PDF previews.
-- Backend & Authentication: Puter.io for user authentication and key-value data storage.
+- **AI-Powered Resume Analysis:** Get an in-depth analysis of your resume powered by AI.
+- **ATS Compatibility Score:** See how well your resume is optimized for ATS.
+- **Tailored Recommendations:** Get personalized recommendations for improvement based on a job description.
+- **Recently Scanned Resumes:** Keep track of your previously analyzed resumes.
+- **Secure and Private:** Your data is kept secure and private.
 
-Code Structure and Functionality
+## Tech Stack
 
-app/root.tsx
-This is the main entry point for the React application. It sets up the basic layout, including the navigation bar, and renders the different
-routes of the application.
+- **Frontend:** React, TypeScript, Tailwind CSS
+- **Routing:** React Router
+- **PDF Processing:** `pdfjs-dist`
+- **State Management:** Zustand
+- **AI:** Custom AI integration for resume analysis
 
-app/routes.ts
-This file defines the URL routes for the application, mapping paths like /, /upload, and /auth to their corresponding components.
+## Getting Started
 
-app/routes/home.tsx
-The landing page of the application. It displays a list of previously analyzed resumes and provides a starting point for users.
+To get a local copy up and running, follow these simple steps.
 
-app/routes/upload.tsx
-This is where users can upload their resumes for analysis. It features a file upload component and is the starting point for the resume
-analysis workflow.
+### Prerequisites
 
-app/routes/auth.tsx
-Handles user authentication using the Puter SDK. It provides a simple interface for users to log in with their Puter account.
+- Node.js and npm installed. You can download them [here](https://nodejs.org/).
 
-app/componenets/fileuploader.tsx
-A reusable React component that provides a drag-and-drop interface for file uploads, built using the react-dropzone library.
+### Installation
 
-app/componenets/resumecard.tsx
-A component used on the home page to display a summary of each analyzed resume, including a preview image and the analysis score.
+1.  Clone the repo
+    ```sh
+    git clone https://github.com/your_username/rezanalyze.git
+    ```
+2.  Install NPM packages
+    ```sh
+    npm install
+    ```
+3.  Start the development server
+    ```sh
+    npm run dev
+    ```
 
-app/lib/pdftoimage.ts
-A utility that converts the first page of an uploaded PDF into a PNG image. This is used to display a visual preview of the resume in the UI.
-It uses the pdfjs-dist library to render the PDF.
+## Usage
 
-app/lib/puter.ts
-This file encapsulates all interactions with the Puter SDK. It includes functions for user authentication (login, getUser) and for storing and
-retrieving data from Puter's key-value store (kv.get, kv.set).
+1.  Navigate to the home page.
+2.  Click on the "Upload" button.
+3.  Fill in the company name, job title, and job description.
+4.  Upload your resume in PDF format.
+5.  Click "Upload & Analyze" to see your results.
 
-constants/index.ts
-This file centralizes constant values used throughout the application, such as navigation links.
+## Contributing
 
-Puter Integration
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-The application is built on the Puter platform, leveraging its backend services for key functionalities:
+If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 
-- Authentication: User authentication is handled entirely by Puter. The puter.auth.login() function is used to initiate the login flow, and
-  puter.auth.getUser() retrieves the current user's information. This simplifies the development process by removing the need for a custom
-  authentication system.
-- Data Storage: The application uses Puter's key-value store (puter.kv) to persist data, such as the results of resume analyses. This allows
-  users to view their past results without needing a traditional database setup.
+1.  Fork the Project
+2.  Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3.  Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
+4.  Push to the Branch (`git push origin feature/AmazingFeature`)
+5.  Open a Pull Request
+
+## License
+
+Distributed under the MIT License. See `LICENSE` for more information.
