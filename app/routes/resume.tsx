@@ -69,22 +69,22 @@ const Resume = () => {
           </span>
         </Link>
       </nav>
-      <div className="flex flex-row w-full max-lg:flex-col-reverse">
-        <section className="feedback-section bg-[url('/images/bg-small.svg') bg-cover top-0  sticky items-center justify-center">
+      <div className="flex flex-row w-full  max-lg:flex-col-reverse">
+        <section className="feedback-section bg-[url('/images/bg-small.svg') bg-cover top-0 h-[100vh]  mt-5 items-center justify-center">
           {imageUrl && resumeUrl && (
-            <div className="feedback-section animate-in fade-in duration-100 gradient-border max-sm:m-0 h-[90%] max-wxl:h-fit w-fit">
+            <div className="feedback-section animate-in fade-in duration-100 gradient-border max-sm:m-0 h-[100vh] max-wxl:h-fit w-fit">
               <a href={resumeUrl} target="_blank" rel="noopener noreferrer">
                 <img
                   src={imageUrl}
                   alt="resume"
                   title="resume"
-                  className="w-full h-[100%] overflow-hidden object-contain rounded-2xl"
+                  className="w-full h-[100vh] overflow-y-hidden object-contain rounded-2xl"
                 />
               </a>
             </div>
           )}
         </section>
-        <section className="feedback-section">
+        <section className="feedback-section h-[100vh] overflow-scroll">
           <h2 className="text-4xl !text-black font-bold">Resume Review</h2>
           {feedback ? (
             <div className="flex flex-col gap-8 animate-in fade-in duration-1000">

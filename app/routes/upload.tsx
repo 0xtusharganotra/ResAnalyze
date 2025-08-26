@@ -1,4 +1,4 @@
-import { prepareInstructions } from "constants";
+import { prepareInstructions, AIResponseFormat } from "constants";
 import React, { useState, type FormEvent } from "react";
 import { useNavigate } from "react-router";
 import FileUploader from "~/componenets/fileuploader";
@@ -59,13 +59,13 @@ const Upload = () => {
       feedback: "",
     };
 
-    await kv.set(`resume${uuid}`, JSON.stringify(data));
+    await kv.set(`resume:${uuid}`, JSON.stringify(data));
 
     setstatusText("Analyzing...");
 
     const feedback = await ai.feedback(
       uploadedFile.path,
-      prepareInstructions({ jobTitle, jobDescription })
+      prepareInstructions({ jobTitle, jobDescription, AIResponseFormat })
     );
 
     if (!feedback) return setstatusText("Error : Failed to analyze resume");
